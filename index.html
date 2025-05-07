@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dasha | Project Coordinator Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-primary: #70228C;
       --color-accent-green: #95B52C;
       --color-accent-pink: #D143B0;
       --color-bg: #F9E7F5;
+      --color-bg2: #E2BEEF;
       --color-text: #333;
       --max-content-width: 1000px;
       --arrow-size-desktop: 48px;
@@ -18,7 +19,7 @@
       --arrow-size-mobile: 32px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--color-bg); color: var(--color-text); }
+    body { font-family: 'Poppins', Arial, sans-serif; background: var(--color-bg); color: var(--color-text); }
     img { display: block; max-width: 100%; }
     a { color: var(--color-primary); text-decoration: none; }
     button { cursor: pointer; border: none; background: none; }
@@ -40,18 +41,20 @@
       width: 160px; height: 240px; object-fit: cover;
       border-radius: 16px; margin: 1rem auto;
     }
-    header h1 {
-      font-size: 2rem; font-weight: 700; margin-top: 1rem;
-    }
+header h1 {
+  font-size: 2rem; font-weight: 400; margin-top: 1rem;
+}
+.highlight-green {
+  color: var(--color-accent-green);
+}
 
     section {
       padding: 3rem 1rem; max-width: var(--max-content-width);
       margin: auto;
     }
-    h2 {
-      font-size: 1.75rem; margin-bottom: 1rem;
-      color: var(--color-primary);
-    }
+h2 {
+  font-size: 1.75rem; font-weight: 500; margin-bottom: 1rem; color: var(--color-primary);
+}
 
     /* About */
     #about .stats {
@@ -72,10 +75,20 @@
     .skills-lists {
       display: flex; gap: 2rem; margin-top: 1rem;
     }
-    .skill-group h3 {
-      font-size: 1.25rem; margin-bottom: 0.5rem;
-      color: var(--color-accent-pink);
-    }
+.skill-group h3 {
+  font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--color-accent-pink);
+}
+/* Make all section headings weight 500 */
+h3 {
+  font-weight: 500;
+}
+/* Project title styling */
+.project > h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
     .skills-lists ul { list-style: none; }
     .skills-lists li { padding: 0.25rem 0; }
 
@@ -85,15 +98,51 @@
       margin: 0 auto 2rem; overflow: visible;
     }
     .carousel {
-      overflow: hidden; border-radius: 8px;
+      overflow: hidden;
+      border-radius: 12px;
+      width: 100%;
       aspect-ratio: 16/9;
     }
+    /* Fade-effect slider styles */
     .slides {
-      display: flex; transition: transform 0.5s ease;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .slides .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .slides .slide.active {
+      opacity: 1;
     }
     .slides img {
-      flex: 0 0 100%; width: 100%; height: 100%;
-      object-fit: cover;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+    .slide figcaption {
+      position: absolute;
+      bottom: 0.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-bg2);
+      color: var(--color-text);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      text-align: center;
+      white-space: nowrap;
     }
     .carousel button {
       position: absolute; top: 50%; transform: translateY(-50%);
@@ -103,12 +152,14 @@
       z-index: 2;
     }
     .carousel .prev {
-      left: calc(-1 * var(--arrow-size-desktop) / 2);
+      /* move arrow full arrow-size plus 1rem gap */
+      left: calc(-1 * var(--arrow-size-desktop) - 1rem);
       width: var(--arrow-size-desktop);
       height: var(--arrow-size-desktop);
     }
     .carousel .next {
-      right: calc(-1 * var(--arrow-size-desktop) / 2);
+      /* move arrow full arrow-size plus 1rem gap */
+      right: calc(-1 * var(--arrow-size-desktop) - 1rem);
       width: var(--arrow-size-desktop);
       height: var(--arrow-size-desktop);
     }
@@ -177,6 +228,43 @@
       border-radius: 8px;
       object-fit: contain;
     }
+    /* Project description enhancements */
+    .project-description {
+      background: var(--color-bg2);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .project-description ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .project-description .problem-list li {
+      position: relative;
+      padding-left: 1.8em;
+      margin-bottom: 0.6em;
+    }
+    .project-description .problem-list li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: var(--color-accent-green);
+      font-weight: bold;
+    }
+    .project-description p:nth-of-type(3) {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    .project-description p strong {
+      color: var(--color-primary);
+      display: inline-block;
+      width: 80px;
+    }
+    .project-description strong {
+      font-weight: normal;
+    }
   </style>
 </head>
 <body>
@@ -184,7 +272,10 @@
   <header>
     <button class="contact-btn">Contact</button>
     <img src="Images/Photo_me1.jpeg" alt="Dasha" class="avatar">
-    <h1>Hello! I'm Dasha<br>Project Coordinator</h1>
+    <h1>
+      Hello! <span class="highlight-green">I'm Dasha</span><br>
+      Project Coordinator
+    </h1>
   </header>
 
   <!-- Projects -->
@@ -194,23 +285,47 @@
     <!-- Project 1 -->
     <div class="project">
       <h3>Product Owner for web portal</h3>
+      <div class="project-description">
+        <p><strong>Product:</strong> The portal for Talent Mentors in IT company.</p>
+        <p><strong>Tools:</strong> Confluence, Figma, Azure DevOps.</p>
+        <p><strong>Problem:</strong></p>
+        <ul class="problem-list">
+          <li>Difficult to maintain and improve.</li>
+          <li>Mentors found the portal unintuitive and often skipped using it.</li>
+          <li>The portal was no longer aligned with the company's evolving processes.</li>
+        </ul>
+        <p><strong>My role:</strong> Product Owner + Project Manager.</p>
+      </div>
       <div class="carousel-container">
         <div class="carousel">
           <button class="prev">◀</button>
           <div class="slides">
-            <img src="https://via.placeholder.com/1200x600" alt="Slide 1">
-            <img src="https://via.placeholder.com/1200x600/CCCCCC" alt="Slide 2">
-            <img src="https://via.placeholder.com/1200x600/AAAAAA" alt="Slide 3">
-            <img src="https://via.placeholder.com/1200x600/888888" alt="Slide 4">
-            <img src="https://via.placeholder.com/1200x600/666666" alt="Slide 5">
+            <figure class="slide">
+              <img src="Images/0363ba34534088afd895f1a3c343815ed49567e6640232e2532f74abf1e1919e.png" alt="Slide 1">
+              <figcaption>Slide 1 caption</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="Images/0751d9253350ec21e145d881073afb519bd983aa8aeaf5c1aa46689a3087677b.png" alt="Slide 2">
+              <figcaption>Slide 2 caption</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="Images/3c7d72c00b6e11ec2355fa028eb682b6a22b286b49ef0b694957a56521c54553.png" alt="Slide 3">
+              <figcaption>Slide 3 caption</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="Images/5915d1d877a45bd0be14d7ef01c2b9e256496fb1d20e542afe0789fe6fee4888.png" alt="Slide 4">
+              <figcaption>Slide 4 caption</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="Images/90a6abff1c09a0fbdf01b0c9405cb6e4eb80463b1102580ec32a2e7fcbfe8430.png" alt="Slide 5">
+              <figcaption>Slide 5 caption</figcaption>
+            </figure>
           </div>
           <button class="next">▶</button>
         </div>
       </div>
       <div class="dots"></div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <p>Nullam scelerisque aliquam odio et faucibus.</p>
-      <p>Praesent non leo quis urna fermentum hendrerit.</p>
+      
     </div>
 
     <!-- Project 2 -->
@@ -220,10 +335,22 @@
         <div class="carousel">
           <button class="prev">◀</button>
           <div class="slides">
-            <img src="https://via.placeholder.com/1200x600/333333" alt="Slide A">
-            <img src="https://via.placeholder.com/1200x600/555555" alt="Slide B">
-            <img src="https://via.placeholder.com/1200x600/777777" alt="Slide C">
-            <img src="https://via.placeholder.com/1200x600/999999" alt="Slide D">
+            <figure class="slide">
+              <img src="https://via.placeholder.com/1200x600/333333" alt="Slide A">
+              <figcaption>Slide A caption</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="https://via.placeholder.com/1200x600/555555" alt="Slide B">
+              <figcaption>Slide B caption</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="https://via.placeholder.com/1200x600/777777" alt="Slide C">
+              <figcaption>Slide C caption</figcaption>
+            </figure>
+            <figure class="slide">
+              <img src="https://via.placeholder.com/1200x600/999999" alt="Slide D">
+              <figcaption>Slide D caption</figcaption>
+            </figure>
           </div>
           <button class="next">▶</button>
         </div>
@@ -263,23 +390,24 @@
     document.querySelectorAll('.project').forEach(project => {
       const carousel = project.querySelector('.carousel');
       const slidesEl = carousel.querySelector('.slides');
-      const imgs = slidesEl.querySelectorAll('img');
+      const slides = slidesEl.querySelectorAll('.slide');
       const prev = carousel.querySelector('.prev');
       const next = carousel.querySelector('.next');
       const dotsContainer = project.querySelector('.dots');
       let index = 0;
-      imgs.forEach((_, i) => {
+      slides.forEach((slide, i) => {
         const dot = document.createElement('span');
         dot.addEventListener('click', () => { index = i; update(); });
         dotsContainer.appendChild(dot);
       });
       const dots = dotsContainer.querySelectorAll('span');
       function update() {
-        slidesEl.style.transform = `translateX(-${index * 100}%)`;
+        // Fade in the active slide
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
         dots.forEach((d, i) => d.classList.toggle('active', i === index));
       }
-      prev.addEventListener('click', () => { index = (index - 1 + imgs.length) % imgs.length; update(); });
-      next.addEventListener('click', () => { index = (index + 1) % imgs.length; update(); });
+      prev.addEventListener('click', () => { index = (index - 1 + slides.length) % slides.length; update(); });
+      next.addEventListener('click', () => { index = (index + 1) % slides.length; update(); });
       update();
     });
   </script>
