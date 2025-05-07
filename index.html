@@ -149,13 +149,41 @@
       .dots span { background: var(--color-primary); }
       .dots span.active { background: var(--color-accent-green); }
     }
+
+    /* Responsive Gallery */
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      padding: 2rem 1rem;
+      width: 100%;
+      max-width: var(--max-content-width);
+      margin: auto;
+    }
+    @media (max-width: 1024px) {
+      #gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      #gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+    #gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      object-fit: contain;
+    }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
     <button class="contact-btn">Contact</button>
-    <img src="https://via.placeholder.com/160x240" alt="Dasha" class="avatar">
+    <img src="Images/Photo_me1.jpeg" alt="Dasha" class="avatar">
     <h1>Hello! I'm Dasha<br>Project Coordinator</h1>
   </header>
 
@@ -165,7 +193,7 @@
 
     <!-- Project 1 -->
     <div class="project">
-      <h3>Project Title 1</h3>
+      <h3>Product Owner for web portal</h3>
       <div class="carousel-container">
         <div class="carousel">
           <button class="prev">◀</button>
@@ -220,14 +248,14 @@
 
   <!-- Gallery -->
   <section id="gallery">
-    <img src="https://via.placeholder.com/300" alt="Gallery 1">
-    <img src="https://via.placeholder.com/300/CCCCCC" alt="Gallery 2">
-    <img src="https://via.placeholder.com/300/AAAAAA" alt="Gallery 3">
-    <img src="https://via.placeholder.com/300/888888" alt="Gallery 4">
-    <img src="https://via.placeholder.com/300/666666" alt="Gallery 5">
-    <img src="https://via.placeholder.com/300/444444" alt="Gallery 6">
-    <img src="https://via.placeholder.com/300/222222" alt="Gallery 7">
-    <img src="https://via.placeholder.com/300/000000" alt="Gallery 8">
+    <img src="images/Photo_5.jpeg" alt="Photo_1">
+    <img src="images/Photo_3.jpeg" alt="Photo_2">
+    <img src="images/Photo_4.jpeg" alt="Photo_3">
+    <img src="images/Photo_1.jpeg" alt="Photo_4">
+    <img src="images/Photo_7.jpeg" alt="Photo_5">
+    <img src="images/Photo_8.jpeg" alt="Photo_6">
+    <img src="images/Photo_2.jpeg" alt="Photo_7">
+    <img src="images/Photo_6.jpeg" alt="Photo_8">
   </section>
 
   <!-- Carousel Script -->
