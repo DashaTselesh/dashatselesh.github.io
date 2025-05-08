@@ -228,6 +228,15 @@ h3 {
       transition: opacity 0.5s ease;
       border-radius: 8px;
       overflow: hidden;
+      background: transparent;
+      margin: 0;
+    }
+    figure.slide {
+      margin: 0;
+      padding: 0;
+    }
+    .carousel {
+      background: transparent;
     }
     .slides .slide.active {
       opacity: 1;
@@ -238,6 +247,13 @@ h3 {
       object-fit: contain;
       display: block;
       margin: 0 auto;
+      border-radius: 8px;
+    }
+    .slides video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
       border-radius: 8px;
     }
     .slide figcaption {
@@ -339,11 +355,21 @@ h3 {
     }
     /* Project description enhancements */
     .project-description {
+      text-align: left;
       background: var(--color-bg2);
       padding: 1.5rem;
       border-radius: 12px;
       margin-bottom: 1.5rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .project-description p {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    .project-description p strong {
+      flex: 0 0 180px;
+      display: inline-block;
     }
     .project-description ul {
       list-style: none;
@@ -369,10 +395,41 @@ h3 {
     .project-description p strong {
       color: var(--color-primary);
       display: inline-block;
-      width: 80px;
+      width: 180px;
     }
     .project-description strong {
       font-weight: normal;
+    }
+    .main-functionality-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 1rem;
+    }
+    .main-functionality-list > li {
+  margin-bottom: 0.75rem;
+    }
+    .main-functionality-list li ul {
+  list-style: disc;
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  padding: 0;
+    }
+    /* Main functionality inline layout */
+    .main-functionality-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .main-functionality-row > strong {
+      color: var(--color-primary);
+      flex: 0 0 165px;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+    .main-functionality-row .main-functionality-list {
+      flex: 1;
+      margin: 0;
+      list-style: none;
+      padding-left: 0;
     }
   </style>
 </head>
@@ -387,7 +444,7 @@ h3 {
       <h3 class="coordinator-line">COORDINATOR</h3>
     </div>
     <div class="header-right">
-      <img src="Images/Photo_me1.jpeg" alt="Dasha" class="avatar avatar-large">
+      <img loading="lazy" src="Images/Photo_me1.jpeg" alt="Dasha" class="avatar avatar-large">
     </div>
   </header>
 
@@ -401,36 +458,59 @@ h3 {
       <div class="project-description">
         <p><strong>Product:</strong> The portal for Talent Mentors in IT company.</p>
         <p><strong>Tools:</strong> Confluence, Figma, Azure DevOps.</p>
+        <p><strong>Product goal:</strong> Simplify work for Talent Mentors and managers.</p>
+        <p><strong>Users:</strong>  Employees, Talent Mentors, other managers.</p>
+        <div class="main-functionality-row">
+          <strong>Main functionality:</strong>
+          <ul class="main-functionality-list">
+            <li>
+              <strong>Talent Management</strong>
+              <ul>
+                <li>Talent details</li>
+                <li>Personal development plan</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Performance Review</strong>
+              <ul>
+                <li>Events</li>
+                <li>Feedback Forms</li>
+              </ul>
+            </li>
+            <li>Ad-hoc feedback</li>
+          </ul>
+        </div>
+        <!--
         <p><strong>Problem:</strong></p>
         <ul class="problem-list">
           <li>Difficult to maintain and improve.</li>
           <li>Mentors found the portal unintuitive and often skipped using it.</li>
           <li>The portal was no longer aligned with the company's evolving processes.</li>
         </ul>
-        <p><strong>My role:</strong> Product Owner + Project Manager.</p>
+        -->
       </div>
       <div class="carousel-container">
         <div class="carousel">
           <button class="prev">◀</button>
           <div class="slides">
             <figure class="slide">
-              <img src="Images/0363ba34534088afd895f1a3c343815ed49567e6640232e2532f74abf1e1919e.png" alt="Slide 1">
-              <figcaption>Slide 1 caption</figcaption>
+              <video data-src="Images/ProjectInitiationTimeling.mp4" muted playsinline preload="metadata" class="lazy-video"></video>
+              
             </figure>
             <figure class="slide">
-              <img src="Images/0751d9253350ec21e145d881073afb519bd983aa8aeaf5c1aa46689a3087677b.png" alt="Slide 2">
-              <figcaption>Slide 2 caption</figcaption>
+              <video data-src="Images/ProblemsSolutions.mp4" muted playsinline preload="metadata" class="lazy-video"></video>
+              
             </figure>
             <figure class="slide">
-              <img src="Images/3c7d72c00b6e11ec2355fa028eb682b6a22b286b49ef0b694957a56521c54553.png" alt="Slide 3">
+              <img loading="lazy" src="Images/3c7d72c00b6e11ec2355fa028eb682b6a22b286b49ef0b694957a56521c54553.png" alt="Slide 3">
               <figcaption>Slide 3 caption</figcaption>
             </figure>
             <figure class="slide">
-              <img src="Images/5915d1d877a45bd0be14d7ef01c2b9e256496fb1d20e542afe0789fe6fee4888.png" alt="Slide 4">
+              <img loading="lazy" src="Images/5915d1d877a45bd0be14d7ef01c2b9e256496fb1d20e542afe0789fe6fee4888.png" alt="Slide 4">
               <figcaption>Slide 4 caption</figcaption>
             </figure>
             <figure class="slide">
-              <img src="Images/90a6abff1c09a0fbdf01b0c9405cb6e4eb80463b1102580ec32a2e7fcbfe8430.png" alt="Slide 5">
+              <img loading="lazy" src="Images/90a6abff1c09a0fbdf01b0c9405cb6e4eb80463b1102580ec32a2e7fcbfe8430.png" alt="Slide 5">
               <figcaption>Slide 5 caption</figcaption>
             </figure>
           </div>
@@ -449,19 +529,19 @@ h3 {
           <button class="prev">◀</button>
           <div class="slides">
             <figure class="slide">
-              <img src="https://via.placeholder.com/1200x600/333333" alt="Slide A">
+              <img loading="lazy" src="https://via.placeholder.com/1200x600/333333" alt="Slide A">
               <figcaption>Slide A caption</figcaption>
             </figure>
             <figure class="slide">
-              <img src="https://via.placeholder.com/1200x600/555555" alt="Slide B">
+              <img loading="lazy" src="https://via.placeholder.com/1200x600/555555" alt="Slide B">
               <figcaption>Slide B caption</figcaption>
             </figure>
             <figure class="slide">
-              <img src="https://via.placeholder.com/1200x600/777777" alt="Slide C">
+              <img loading="lazy" src="https://via.placeholder.com/1200x600/777777" alt="Slide C">
               <figcaption>Slide C caption</figcaption>
             </figure>
             <figure class="slide">
-              <img src="https://via.placeholder.com/1200x600/999999" alt="Slide D">
+              <img loading="lazy" src="https://via.placeholder.com/1200x600/999999" alt="Slide D">
               <figcaption>Slide D caption</figcaption>
             </figure>
           </div>
@@ -488,14 +568,14 @@ h3 {
 
   <!-- Gallery -->
   <section id="gallery">
-    <img src="Images/Photo_5.jpeg" alt="Photo_1">
-    <img src="Images/Photo_3.jpeg" alt="Photo_2">
-    <img src="Images/Photo_4.jpeg" alt="Photo_3">
-    <img src="Images/Photo_1.jpeg" alt="Photo_4">
-    <img src="Images/Photo_7.jpeg" alt="Photo_5">
-    <img src="Images/Photo_8.jpeg" alt="Photo_6">
-    <img src="Images/Photo_2.jpeg" alt="Photo_7">
-    <img src="Images/Photo_6.jpeg" alt="Photo_8">
+    <img loading="lazy" src="Images/Photo_5.jpeg" alt="Photo_1">
+    <img loading="lazy" src="Images/Photo_3.jpeg" alt="Photo_2">
+    <img loading="lazy" src="Images/Photo_4.jpeg" alt="Photo_3">
+    <img loading="lazy" src="Images/Photo_1.jpeg" alt="Photo_4">
+    <img loading="lazy" src="Images/Photo_7.jpeg" alt="Photo_5">
+    <img loading="lazy" src="Images/Photo_8.jpeg" alt="Photo_6">
+    <img loading="lazy" src="Images/Photo_2.jpeg" alt="Photo_7">
+    <img loading="lazy" src="Images/Photo_6.jpeg" alt="Photo_8">
   </section>
 
   <!-- Carousel Script -->
@@ -504,6 +584,16 @@ h3 {
       const carousel = project.querySelector('.carousel');
       const slidesEl = carousel.querySelector('.slides');
       const slides = slidesEl.querySelectorAll('.slide');
+      // Ensure videos play only once
+      slides.forEach(slide => {
+        const vid = slide.querySelector('video');
+        if (vid) {
+          vid.loop = false;
+          vid.addEventListener('ended', () => {
+            vid.pause();
+          });
+        }
+      });
       const prev = carousel.querySelector('.prev');
       const next = carousel.querySelector('.next');
       const dotsContainer = project.querySelector('.dots');
@@ -515,13 +605,49 @@ h3 {
       });
       const dots = dotsContainer.querySelectorAll('span');
       function update() {
-        // Fade in the active slide
-        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        slides.forEach((slide, i) => {
+          const isActive = (i === index);
+          slide.classList.toggle('active', isActive);
+          const video = slide.querySelector('video');
+          if (video) {
+            if (isActive) {
+              video.currentTime = 0;
+              video.play();
+            } else {
+              video.pause();
+            }
+          }
+        });
         dots.forEach((d, i) => d.classList.toggle('active', i === index));
       }
       prev.addEventListener('click', () => { index = (index - 1 + slides.length) % slides.length; update(); });
       next.addEventListener('click', () => { index = (index + 1) % slides.length; update(); });
       update();
+    });
+  </script>
+  <script>
+    // Lazy-load and control video playback based on scroll position
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const vid = entry.target;
+        if (entry.isIntersecting) {
+          // On first intersection, lazy-load the source if needed
+          if (vid.dataset.src && !vid.src) {
+            vid.src = vid.dataset.src;
+            vid.load();
+          }
+          // Always restart and play when coming into view
+          vid.currentTime = 0;
+          vid.play();
+        } else {
+          // Pause when out of view
+          vid.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.lazy-video').forEach(video => {
+      videoObserver.observe(video);
     });
   </script>
 </body>
