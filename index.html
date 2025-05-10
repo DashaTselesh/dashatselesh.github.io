@@ -184,9 +184,7 @@ h2 {
     .skills-lists {
       display: flex; gap: 2rem; margin-top: 1rem;
     }
-.skill-group h3 {
-  font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--color-accent-pink);
-}
+
 /* Make all section headings weight 500 */
 h3 {
   font-weight: 500;
@@ -207,10 +205,11 @@ h3 {
       margin: 0 auto 2rem; overflow: visible;
     }
     .carousel {
+      background: var(--color-bg);   
+      aspect-ratio: 16 / 9;            /* default ratio for image sliders */
       overflow: hidden;
       border-radius: 12px;
       width: 100%;
-      aspect-ratio: 16/9;
     }
     /* Fade-effect slider styles */
     .slides {
@@ -252,7 +251,7 @@ h3 {
     .slides video {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
       border-radius: 8px;
     }
@@ -326,6 +325,14 @@ h3 {
       .dots span.active { background: var(--color-accent-green); }
     }
 
+    /* Mobile: tighten label spacing in project description */
+    @media (max-width: 480px) {
+      .project-description p strong {
+        flex: 0 0 100px; /* reduce from 180px to 100px */
+        width: 100px;
+      }
+    }
+
     /* Responsive Gallery */
     #gallery {
       display: grid;
@@ -355,47 +362,51 @@ h3 {
     }
     /* Project description enhancements */
     .project-description {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem 4rem;
       text-align: left;
       background: var(--color-bg2);
       padding: 1.5rem;
       border-radius: 12px;
       margin-bottom: 1.5rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      align-items: start;
+    }
+    /* Make nested functionality rows span both columns */
+    .project-description .main-functionality-row {
+      grid-column: 1 / -1;
+    }
+    /* Single column on smaller screens */
+    @media (max-width: 768px) {
+      .project-description {
+        grid-template-columns: 1fr;
+      }
+      /* Collapse nested functionality grid on small screens */
+      .project-description .main-functionality-row {
+        grid-template-columns: 1fr;
+      }
+      /* Ensure both heading and list span the single column on small screens */
+      .project-description .main-functionality-row > strong,
+      .project-description .main-functionality-row .main-functionality-list {
+        grid-column: 1;
+      }
     }
     .project-description p {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 0.75rem;
-    }
-    .project-description p strong {
-      flex: 0 0 180px;
-      display: inline-block;
+      display: block;
+      line-height: 1.4;
     }
     .project-description ul {
       list-style: none;
       padding-left: 0;
     }
-    .project-description .problem-list li {
-      position: relative;
-      padding-left: 1.8em;
-      margin-bottom: 0.6em;
-    }
-    .project-description .problem-list li::before {
-      content: '✔';
-      position: absolute;
-      left: 0;
-      color: var(--color-accent-green);
-      font-weight: bold;
-    }
-    .project-description p:nth-of-type(3) {
-      margin-top: 1rem;
-      padding-top: 1rem;
+    /* Divider line spanning both columns */
+    .project-description .divider-top {
+      grid-column: 1 / -1;
       border-top: 1px solid rgba(0,0,0,0.1);
     }
     .project-description p strong {
       color: var(--color-primary);
-      display: inline-block;
-      width: 180px;
     }
     .project-description strong {
       font-weight: normal;
@@ -413,20 +424,21 @@ h3 {
   margin: 0.5rem 0 0.75rem 1.5rem;
   padding: 0;
     }
-    /* Main functionality inline layout */
+    /* Main functionality inline layout aligning with outer grid columns */
     .main-functionality-row {
-      display: flex;
-      align-items: flex-start;
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+      align-items: start;
       margin-bottom: 1rem;
     }
     .main-functionality-row > strong {
       color: var(--color-primary);
-      flex: 0 0 165px;
-      display: inline-block;
-      margin-right: 1rem;
+      grid-column: 1;
+      font-weight: 500;
     }
     .main-functionality-row .main-functionality-list {
-      flex: 1;
+      grid-column: 2;
       margin: 0;
       list-style: none;
       padding-left: 0;
@@ -480,6 +492,88 @@ h3 {
         gap: 1rem;
       }
     }
+    /* Contact Section Card */
+    #contact {
+      padding: 3rem 1rem;
+    }
+    #contact h2 {
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      background: var(--color-bg);
+      display: inline-block;
+      padding: 0 0.5rem;
+      text-align: left;
+      margin-bottom: 2rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Custom Contact layout */
+    #contact .contact-content {
+      background: var(--color-bg2);
+      padding: 2rem 1rem;
+      border-radius: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+      max-width: var(--max-content-width);
+      margin: auto;
+    }
+    #contact .contact-text {
+      flex: 0 0 350px;
+      max-width: 350px;
+    }
+    #contact .contact-text p {
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+    }
+    #contact .contact-link.simple {
+      font-size: 1rem;
+      color: var(--color-primary);
+    }
+    /* Style labels like the email link */
+    #contact .contact-text p strong {
+      color: var(--color-primary);
+      font-weight: normal;
+    }
+    #contact .contact-form {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    #contact .contact-form input,
+    #contact .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: #fff;
+      border: 1px solid var(--color-primary);
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Focus styles without gap between border and outline */
+    #contact .contact-form input:focus,
+    #contact .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--color-accent-green);
+    }
+    #contact .contact-form textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    #contact .contact-form .send-btn {
+      align-self: center;
+      background: var(--color-accent-green);
+      color: #fff;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -525,10 +619,12 @@ h3 {
     <div class="project">
       <h3>Product Owner for web portal</h3>
       <div class="project-description">
-        <p><strong>Product:</strong> The portal for Talent Mentors in IT company.</p>
-        <p><strong>Tools:</strong> Confluence, Figma, Azure DevOps.</p>
-        <p><strong>Product goal:</strong> Simplify work for Talent Mentors and managers.</p>
-        <p><strong>Users:</strong>  Employees, Talent Mentors, Division Managers.</p>
+        <p><strong>Product:</strong></p><p> The portal for Talent Mentors in IT company.</p>
+        <p><strong>Tools:</strong></p><p> Confluence, Figma, Azure DevOps.</p>
+        <div class="divider-top"></div>
+        <p><strong>Product goal:</strong></p>
+        <p> Simplify work for Talent Mentors and managers.</p>
+        <p><strong>Users:</strong></p><p> Employees, Talent Mentors, Division Managers.</p>
         <div class="main-functionality-row">
           <strong>Main functionality:</strong>
           <ul class="main-functionality-list">
@@ -555,7 +651,7 @@ h3 {
           <button class="prev">◀</button>
           <div class="slides">
             <figure class="slide">
-              <video data-src="Images/ProjectInitiationTimeling.mp4" muted playsinline preload="metadata" class="lazy-video"></video>
+              <video data-src="Images/Project_initiation_timeline.mp4" muted playsinline preload="metadata" class="lazy-video"></video>
             </figure>
             <figure class="slide">
               <video data-src="Images/ProblemsSolutions.mp4" muted playsinline preload="metadata" class="lazy-video"></video>
@@ -649,46 +745,93 @@ h3 {
 
     <!-- Project 2 -->
     <div class="project">
-      <h3>Project Title 2</h3>
+      <h3>Sofology</h3>
+      <div class="project-description">
+        <p><strong>Client:</strong></p><p> British sofa retailer.</p>
+        <p><strong>Product:</strong></p><p> Retail website for sofas and home furniture.</p>
+        <p><strong>Tools:</strong></p><p> Jira, Confluence.</p>
+        <div class="divider-top"></div>
+        <p><strong>Project Goal:</strong></p>
+        <p> Re-engineering and improving Basket and Checkout experience.</p>
+        <p><strong>Role:</strong></p><p> Team Lead for Business Analyst, 2 full-stack developers, and QA engineer.</p>
+      </div>
       <div class="carousel-container">
         <div class="carousel">
           <button class="prev">◀</button>
           <div class="slides">
             <figure class="slide">
-              <img loading="lazy" src="https://via.placeholder.com/1200x600/333333" alt="Slide A">
-              <figcaption>Slide A caption</figcaption>
+              <video data-src="Images/Project_highlights.mp4" muted playsinline preload="metadata" class="lazy-video"></video>
             </figure>
             <figure class="slide">
-              <img loading="lazy" src="https://via.placeholder.com/1200x600/555555" alt="Slide B">
-              <figcaption>Slide B caption</figcaption>
+              <img loading="lazy" src="Images/Result.png" alt="Result">
             </figure>
             <figure class="slide">
-              <img loading="lazy" src="https://via.placeholder.com/1200x600/777777" alt="Slide C">
-              <figcaption>Slide C caption</figcaption>
+              <img loading="lazy" src="Images/basket1.png" alt="Slide B">
+              <figcaption>New Basket</figcaption>
             </figure>
             <figure class="slide">
-              <img loading="lazy" src="https://via.placeholder.com/1200x600/999999" alt="Slide D">
-              <figcaption>Slide D caption</figcaption>
+              <img loading="lazy" src="Images/basket2.png" alt="Slide C">
+              <figcaption>New Basket</figcaption>
+            </figure>
+            <figure class="slide">
+              <img loading="lazy" src="Images/checkout.png" alt="Slide D">
+              <figcaption>Checkout Process</figcaption>
             </figure>
           </div>
           <button class="next">▶</button>
         </div>
         <div class="dots"></div>
       </div>
-      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation.</p>
-      <p>Quis aute irure dolor in reprehenderit.</p>
+      <div class="project-description">
+        <div class="main-functionality-row">
+          <strong>Responsibilities:</strong>
+          <ul class="main-functionality-list">
+            <li>
+              <strong>Requirements & Planning</strong>
+              <ul>
+                <li>Clarify business and technical requirements, as well as team expectations</li>
+                <li>Define and apply Definition of Ready and Definition of Done</li>
+                <li>Prepare technical documentation for the team</li>
+                <li>Identify and discuss project risks with the Product Owner</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Team Management</strong>
+              <ul>
+                <li>Manage a Business Analyst, two developers, and a QA engineer</li>
+                <li>Distribute tasks within the team</li>
+                <li>Build the team and support team motivation</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Delivery & Execution</strong>
+              <ul>
+                <li>Prepare delivery plans with time estimations</li>
+                <li>Manage technical dependencies and facilitate team discussions to resolve issues</li>
+                <li>Report on project status and progress</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
-    <button class="linkedin-btn">Write me on LinkedIn</button>
-    <div class="links">
-      <a href="#">Email: example@mail.com</a>
-      <a href="#">Telegram: @example</a>
-      <a href="#">LinkedIn: linkedin.com/in/example</a>
+    <div class="contact-content">
+      <div class="contact-text">
+        <p>Looking to start a project or you need consultation?</br>Feel free to contact me.</p>
+        <p><strong>Email:</strong> <a href="mailto:dtv@gmail.com" class="contact-link simple">dtv@gmail.com</a></p>
+        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/molis_marguolis/" class="contact-link simple" target="_blank">@molis_marguolis</a></p>
+      </div>
+      <form id="contact-form" class="contact-form">
+        <input type="text" name="name" placeholder="Your name">
+        <input type="email" name="email" placeholder="Your email">
+        <textarea name="message" placeholder="Message"></textarea>
+        <button type="submit" class="send-btn">Send a message</button>
+      </form>
     </div>
   </section>
 
@@ -711,12 +854,20 @@ h3 {
       const slidesEl = carousel.querySelector('.slides');
       const slides = slidesEl.querySelectorAll('.slide');
       // Ensure videos play only once
-      slides.forEach(slide => {
+      slides.forEach((slide, slideIdx) => {
         const vid = slide.querySelector('video');
         if (vid) {
           vid.loop = false;
           vid.addEventListener('ended', () => {
             vid.pause();
+          });
+          // Ensure the ratio is set once video metadata is available
+          vid.addEventListener('loadedmetadata', () => {
+            // If this slide is currently active, update the container ratio
+            if (slides[slideIdx].classList.contains('active')) {
+              const ratio = vid.videoWidth / vid.videoHeight;
+              carousel.style.aspectRatio = ratio;
+            }
           });
         }
       });
@@ -745,6 +896,16 @@ h3 {
           }
         });
         dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        // Dynamically adjust carousel container to active slide's aspect ratio
+        const media = slides[index].querySelector('video, img');
+        if (media) {
+          // For images, use natural dimensions; for video, use metadata
+          const w = media.tagName === 'IMG' ? media.naturalWidth : media.videoWidth;
+          const h = media.tagName === 'IMG' ? media.naturalHeight : media.videoHeight;
+          if (w && h) {
+            carousel.style.aspectRatio = `${w} / ${h}`;
+          }
+        }
       }
       prev.addEventListener('click', () => { index = (index - 1 + slides.length) % slides.length; update(); });
       next.addEventListener('click', () => { index = (index + 1) % slides.length; update(); });
@@ -754,26 +915,47 @@ h3 {
   <script>
     // Lazy-load and control video playback based on scroll position
     const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const vid = entry.target;
-        if (entry.isIntersecting) {
-          // On first intersection, lazy-load the source if needed
-          if (vid.dataset.src && !vid.src) {
-            vid.src = vid.dataset.src;
-            vid.load();
-          }
-          // Always restart and play when coming into view
+  entries.forEach(entry => {
+    const vid = entry.target;
+    if (entry.isIntersecting) {
+      // First time: lazy-load the src and wait for metadata, then play
+      if (vid.dataset.src && !vid.src) {
+        vid.src = vid.dataset.src;
+        vid.addEventListener('loadedmetadata', () => {
           vid.currentTime = 0;
-          vid.play();
-        } else {
-          // Pause when out of view
-          vid.pause();
-        }
-      });
-    }, { threshold: 0.5 });
+          vid.play().catch(err => {
+            if (err.name !== 'AbortError') console.error(err);
+          });
+        }, { once: true });
+        vid.load();
+      } else {
+        // Subsequent times: simply rewind and play
+        vid.currentTime = 0;
+        vid.play().catch(err => {
+          if (err.name !== 'AbortError') console.error(err);
+        });
+      }
+    } else {
+      vid.pause();
+    }
+  });
+}, { threshold: 0.5 });
 
     document.querySelectorAll('.lazy-video').forEach(video => {
       videoObserver.observe(video);
+    });
+  </script>
+  <script>
+    // Send email via mailto when the contact form is submitted
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = this.querySelector('input[name="name"]').value.trim();
+      const email = this.querySelector('input[name="email"]').value.trim();
+      const message = this.querySelector('textarea[name="message"]').value.trim();
+      const subject = encodeURIComponent(`Message from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      // Opens the user's email client
+      window.location.href = `mailto:dtv@gmail.com?subject=${subject}&body=${body}`;
     });
   </script>
 </body>
