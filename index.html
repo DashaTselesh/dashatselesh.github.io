@@ -6,6 +6,9 @@
   <title>Dasha | Project Coordinator Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     :root {
       --color-primary: #70228C;
       --color-accent-green: #95B52C;
@@ -46,36 +49,40 @@ header h1 {
       background: var(--color-primary);
       color: #fff;
       text-align: center;
+      margin: 2rem 4rem 0rem 4rem;
+      border-radius: 16px;
+      overflow: hidden;
     }
     .header-text {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 0.1rem;
+      margin-left: -6rem;
     }
     .hello-line {
       margin-left: 20%;
-      font-size: 4rem;
+      font-size: clamp(2rem, 8vw, 4rem);
     }
     .im-line {
       margin-left: 30%;
-      font-size: 4rem;
+      font-size: clamp(2rem, 8vw, 4rem);
     }
     .project-line {
       margin-left: 40%;
-      font-size: 4rem;
+      font-size: clamp(2rem, 8vw, 4rem);
     }
     .coordinator-line {
       margin-left: 10%;
-      font-size: 4rem;
+      font-size: clamp(2rem, 8vw, 4rem);
     }
     .italic {
       font-style: italic;
     }
     .contact-btn {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 2rem;
+      right: clamp(2rem, 5vw, 8rem);
       padding: 1rem 2rem;
       font-size: 1.25rem;
       border-radius: 50px;
@@ -97,46 +104,9 @@ header h1 {
     @media (max-width: 1024px) and (min-width: 769px) {
       .header {
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
         padding: 3rem 1.5rem;
         gap: 2rem;
-      }
-      .header-text {
-        align-items: center;
-      }
-      .hello-line,
-      .im-line,
-      .project-line,
-      .coordinator-line {
-        margin-left: 0;
-        font-size: 3rem;
-        text-align: center;
-      }
-      .avatar-large {
-        width: 280px;
-      }
-      .contact-btn {
-        top: 0.75rem;
-        right: 0.75rem;
-        padding: 0.75rem 1.5rem;
-        font-size: 1.125rem;
-      }
-    }
-    @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-        padding: 2rem 1rem;
-      }
-      .header-right {
-        margin: 2rem auto 0;
-        position: relative;
-        bottom: auto;
-        right: auto;
-      }
-      .avatar-large {
-        width: 200px;
       }
       .header-text {
         align-items: center;
@@ -149,36 +119,227 @@ header h1 {
         font-size: 2.5rem;
         text-align: center;
       }
+      .avatar-large {
+        width: 280px;
+      }
       .contact-btn {
-        top: 0.5rem;
-        right: 0.5rem;
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 0;
+        align-self: flex-start;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.125rem;
+      }
+    }
+    /* Tablet header: text and photo side by side */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .header {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 1rem;
+        margin: 1rem 1rem 0;
+        text-align: center;
+      }
+      .header-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-left: 0;
+      }
+      .header-right {
+        margin: 0;
+        align-self: center;
+      }
+      /* Override contact button placement on tablet */
+      .contact-btn {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        right: auto;
+        display: inline-block;
+        width: auto;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.125rem;
+      }
+      /* Reduce header font size on tablet */
+      .hello-line,
+      .im-line,
+      .project-line,
+      .coordinator-line {
+        font-size: 2.5rem;
+      }
+
+      .avatar-large {
+        width: 200px;
+      }
+    }
+    @media (max-width: 480px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+        margin: 1rem 1rem 0;
+      }
+      .header-right {
+        margin: 2rem auto 0;
+        position: relative;
+        bottom: auto;
+        right: auto;
+      }
+      .avatar-large {
+        width: 200px;
+      }
+      .header-text {
+        align-items: center;
+        margin-left: 0rem;
+      }
+      .hello-line,
+      .im-line,
+      .project-line,
+      .coordinator-line {
+        margin-left: 0;
+        font-size: 2rem;
+        text-align: center;
+      }
+      .contact-btn {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        right: auto;
         padding: 0.5rem 1rem;
         font-size: 1rem;
+        display: inline-block;
+        white-space: nowrap;
+        width: fit-content;
+      }
+    }
+
+    /* Desktop header: shift text left and increase space to photo */
+    @media (min-width: 1025px) {
+      .header {
+        gap: 6rem;
+      }
+    }
+
+    /* Prevent contact button overlapping photo on mid-size desktops */
+    @media (min-width: 1025px) and (max-width: 1400px) {
+      .contact-btn {
+        position: absolute;
+        right: auto;
+        top: 2rem;
+        left: clamp(2rem, 5vw, 8rem);
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+        display: inline-block;
+        white-space: nowrap;
+        width: auto;
       }
     }
 
     section {
-      padding: 3rem 1rem; max-width: var(--max-content-width);
+      padding: 3rem 1rem 0rem 1rem; max-width: var(--max-content-width);
       margin: auto;
     }
 h2 {
-  font-size: 1.75rem; font-weight: 500; margin-bottom: 1rem; color: var(--color-primary);
+  font-size: 1.75rem; font-weight: 500; margin-bottom: 1rem; color: var(--color-accent-green);
 }
 
     /* About */
+    /* About text styling */
+#about .about-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+#about .about-list {
+  list-style: disc inside;
+  margin: 0 0 1.5rem;
+  padding-left: 1rem;
+}
+#about .about-list li {
+  margin-bottom: 0.5rem;
+}
+  /* About callout and cards visualization */
+  #about .about-callout {
+    background: var(--color-bg2);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  #about .about-callout p {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  #about .about-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  #about .about-cards .card {
+    flex: 0 1 180px;
+    display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;   
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  font-size: 1rem;
+  }
+  @media (min-width: 1025px) {
+  #about .about-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  #about .about-cards .card {
+    flex: 0 0 calc((100% - 3rem) / 3);
+    max-width: calc((100% - 3rem) / 3);
+  }
+}
+  /* About cards heading and text styling */
+  #about .about-cards .card h3 {
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 550;
+    margin-bottom: 0.5rem;
+  }
+  #about .about-cards .card p {
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0;
+    line-height: 1.5;
+  }
     #about .stats {
-      display: flex; flex-wrap: wrap; gap: 1.5rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
       margin: 1rem 0;
     }
     .stat {
       flex: 1 1 120px; background: #fff; padding: 1rem;
+      max-width: 200px;
       border-radius: 8px; text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       transition: transform 0.2s;
+      color:var(--color-primary)
     }
     .stat:hover { transform: scale(1.05); }
     .stat .number {
-      font-size: 1.5rem; font-weight: 700;
+      font-size: 2rem; font-weight: 600;
       color: var(--color-accent-green);
     }
     .skills-lists {
@@ -338,7 +499,7 @@ h3 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       width: 100%;
       max-width: var(--max-content-width);
       margin: auto;
@@ -449,8 +610,16 @@ h3 {
       max-width: none;
       width: 100vw;
       margin-left: calc(50% - 50vw);
-      padding: 1rem 0;
+      padding: 1.5rem 0 1.5rem;
     }
+    /* Adjust spacing between tools, projects, and contact */
+    #projects {
+      padding-top: 0rem;
+    }
+    #projects .project + .project {
+      margin-top: 4rem;
+    }
+   
     .marquee {
       display: flex;
       align-items: center;
@@ -493,18 +662,16 @@ h3 {
       }
     }
     /* Contact Section Card */
-    #contact {
-      padding: 3rem 1rem;
-    }
+    
     #contact h2 {
       font-size: 1.75rem;
       font-weight: 500;
-      color: var(--color-primary);
+      color: var(--color-accent-green);
       background: var(--color-bg);
       display: inline-block;
       padding: 0 0.5rem;
       text-align: left;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       font-family: 'Poppins', sans-serif;
     }
 
@@ -526,11 +693,16 @@ h3 {
     }
     #contact .contact-text p {
       font-size: 1.125rem;
-      margin-bottom: 0.75rem;
+    }
+    #contact .contact-details p {
+      margin-top: 0.75rem;
     }
     #contact .contact-link.simple {
-      font-size: 1rem;
-      color: var(--color-primary);
+      font-size: 1.125rem;
+      color: var(--color-accent-pink);
+    }
+    #contact .contact-link.simple:hover {
+      color: var(--color-accent-green);
     }
     /* Style labels like the email link */
     #contact .contact-text p strong {
@@ -574,12 +746,44 @@ h3 {
       font-weight: 500;
       border: none;
     }
+    /* Bounce animation for send button */
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.1); }
+      60% { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+    #contact .contact-form .send-btn.bounce {
+      animation: bounce 0.6s ease;
+    }
+    /* Align contact section columns and stack intro/details on desktop */
+    @media (min-width: 769px) {
+      /* Stretch both columns to equal height */
+      #contact .contact-content {
+        align-items: stretch;
+      }
+      /* Stack intro and details vertically and distribute space */
+      #contact .contact-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      /* No special self-alignment needed now */
+    }
+
+    /* On mobile: make contact-text full width */
+    @media (max-width: 768px) {
+      #contact .contact-text {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header class="header">
-    <button class="contact-btn">Contact</button>
+    <a href="#contact" class="contact-btn">Contact</a>
     <div class="header-text">
       <h1 class="hello-line">HELLO!</h1>
       <h2 class="im-line highlight-green italic">I'M DASHA</h2>
@@ -590,6 +794,39 @@ h3 {
       <img loading="lazy" src="Images/Photo_me1.jpeg" alt="Dasha" class="avatar avatar-large">
     </div>
   </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About</h2>
+    <div class="about-callout">
+      <p>I'm a relationship-driven Project Coordinator who blends creative energy with structured processes:</p>
+    </div>
+    <div class="about-cards">
+      <div class="card"><p>Drive clear communication and group discussions</p></div>
+      <div class="card"><p>Translate goals into focused Agile sprints</p></div>
+      <div class="card"><p>Manage scope and expectations</p></div>
+      <div class="card"><p>Coordinate distributed teams</p></div>
+      <div class="card"><p>Automate routine tasks with AI</p></div>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="number">10+</div>
+        <p>years in</br> Agile delivery</p>
+      </div>
+      <div class="stat">
+        <div class="number">5</div>
+        <p>years leading cross‑functional teams</p>
+      </div>
+      <div class="stat">
+        <div class="number">4</div>
+        <p>years in people management</p>
+      </div>
+      <div class="stat">
+        <div class="number">80+</div>
+        <p>talent mentors coordinated</p>
+      </div>
+    </div>
+  </section>
 
   <!-- Tools Marquee -->
   <section class="tools-marquee">
@@ -617,14 +854,14 @@ h3 {
 
     <!-- Project 1 -->
     <div class="project">
-      <h3>Product Owner for web portal</h3>
+      <h3>Product Owner for digital portal</h3>
       <div class="project-description">
-        <p><strong>Product:</strong></p><p> The portal for Talent Mentors in IT company.</p>
-        <p><strong>Tools:</strong></p><p> Confluence, Figma, Azure DevOps.</p>
+        <p><strong>Product:</strong></p><p> The portal for Talent Mentors in IT company</p>
+        <p><strong>Tools:</strong></p><p> Confluence, Figma, Azure DevOps</p>
         <div class="divider-top"></div>
         <p><strong>Product goal:</strong></p>
-        <p> Simplify work for Talent Mentors and managers.</p>
-        <p><strong>Users:</strong></p><p> Employees, Talent Mentors, Division Managers.</p>
+        <p> Simplify work for Talent Mentors and managers</p>
+        <p><strong>Users:</strong></p><p> Employees, Talent Mentors, Division Managers</p>
         <div class="main-functionality-row">
           <strong>Main functionality:</strong>
           <ul class="main-functionality-list">
@@ -745,22 +982,22 @@ h3 {
 
     <!-- Project 2 -->
     <div class="project">
-      <h3>Sofology</h3>
+      <h3>Team Lead for UK sofa retailer</h3>
       <div class="project-description">
-        <p><strong>Client:</strong></p><p> British sofa retailer.</p>
-        <p><strong>Product:</strong></p><p> Retail website for sofas and home furniture.</p>
-        <p><strong>Tools:</strong></p><p> Jira, Confluence.</p>
+        <p><strong>Client:</strong></p><p> British sofa retailer</p>
+        <p><strong>Product:</strong></p><p> Retail website for sofas and home furniture</p>
+        <p><strong>Tools:</strong></p><p> Jira, Confluence</p>
         <div class="divider-top"></div>
         <p><strong>Project Goal:</strong></p>
-        <p> Re-engineering and improving Basket and Checkout experience.</p>
-        <p><strong>Role:</strong></p><p> Team Lead for Business Analyst, 2 full-stack developers, and QA engineer.</p>
+        <p> Re-engineering and improving Basket and Checkout experience</p>
+        <p><strong>Role:</strong></p><p> Team Lead for Business Analyst, 2 full-stack developers, and QA engineer</p>
       </div>
       <div class="carousel-container">
         <div class="carousel">
           <button class="prev">◀</button>
           <div class="slides">
             <figure class="slide">
-              <video data-src="Images/Project_highlights.mp4" muted playsinline preload="metadata" class="lazy-video"></video>
+              <video data-src="Images/ImplementationHighlights.mp4" muted playsinline preload="metadata" class="lazy-video"></video>
             </figure>
             <figure class="slide">
               <img loading="lazy" src="Images/Result.png" alt="Result">
@@ -776,6 +1013,22 @@ h3 {
             <figure class="slide">
               <img loading="lazy" src="Images/checkout.png" alt="Slide D">
               <figcaption>Checkout Process</figcaption>
+            </figure>
+            <figure class="slide">
+              <img loading="lazy" src="Images/office.jpeg" alt="Slide D">
+              <figcaption>Business Trip</figcaption>
+            </figure>
+            <figure class="slide">
+              <img loading="lazy" src="Images/cups.jpeg" alt="Slide D">
+              <figcaption>Coffee Break</figcaption>
+            </figure>
+            <figure class="slide">
+              <img loading="lazy" src="Images/workinprogress.jpeg" alt="Slide D">
+              <figcaption>Technical Discussions</figcaption>
+            </figure>
+            <figure class="slide">
+              <img loading="lazy" src="Images/jacket.jpeg" alt="Slide D">
+              <figcaption>Warehouse Tour</figcaption>
             </figure>
           </div>
           <button class="next">▶</button>
@@ -822,13 +1075,17 @@ h3 {
     <h2>Contact</h2>
     <div class="contact-content">
       <div class="contact-text">
-        <p>Looking to start a project or you need consultation?</br>Feel free to contact me.</p>
-        <p><strong>Email:</strong> <a href="mailto:dtv@gmail.com" class="contact-link simple">dtv@gmail.com</a></p>
-        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/molis_marguolis/" class="contact-link simple" target="_blank">@molis_marguolis</a></p>
+        <div class="contact-intro">
+          <p>Need support running your project smoothly?<br>I’d love to hear what you’re working on — let’s move it forward together.</p>
+        </div>
+        <div class="contact-details">
+          <p><strong>Vilnius, Lithuania</strong></p>
+          <p><strong>Email:</strong> <a href="mailto:contact.dasha@icloud.com" class="contact-link simple">contact.dasha@icloud.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/darya-tselesh-1a5b3572/?locale=en_US" class="contact-link simple" target="_blank">dasha_telesh</a></p>
+        </div>
       </div>
       <form id="contact-form" class="contact-form">
         <input type="text" name="name" placeholder="Your name">
-        <input type="email" name="email" placeholder="Your email">
         <textarea name="message" placeholder="Message"></textarea>
         <button type="submit" class="send-btn">Send a message</button>
       </form>
@@ -913,6 +1170,21 @@ h3 {
     });
   </script>
   <script>
+    // Bounce animation every time send button enters viewport
+    const sendBtn = document.querySelector('#contact .send-btn');
+    const btnObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sendBtn.classList.add('bounce');
+          sendBtn.addEventListener('animationend', () => {
+            sendBtn.classList.remove('bounce');
+          }, { once: true });
+        }
+      });
+    }, { threshold: 0.5 });
+    btnObserver.observe(sendBtn);
+  </script>
+  <script>
     // Lazy-load and control video playback based on scroll position
     const videoObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -950,12 +1222,11 @@ h3 {
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = this.querySelector('input[name="name"]').value.trim();
-      const email = this.querySelector('input[name="email"]').value.trim();
       const message = this.querySelector('textarea[name="message"]').value.trim();
       const subject = encodeURIComponent(`Message from ${name}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      const body = encodeURIComponent(`${message}`);
       // Opens the user's email client
-      window.location.href = `mailto:dtv@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:contact.dasha@icloud.com?subject=${subject}&body=${body}`;
     });
   </script>
 </body>
