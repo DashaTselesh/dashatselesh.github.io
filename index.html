@@ -277,6 +277,7 @@ h2 {
     line-height: 1.6;
   }
   #about .about-cards {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -284,18 +285,45 @@ h2 {
     margin-bottom: 2rem;
   }
   #about .about-cards .card {
+    opacity: 0;
+    transform: scale(0.3);
+    animation-name: popIn;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-play-state: paused;
+    transition: transform 0.6s ease-out;
     flex: 0 1 180px;
     display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center;   
-  background: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
-  font-size: 1rem;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;   
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 1rem;
   }
+
+  /* Pop-in keyframes */
+  @keyframes popIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  /* Staggered delays */
+  #about .about-cards .card:nth-child(1) { animation-delay: 0.1s; }
+  #about .about-cards .card:nth-child(2) { animation-delay: 0.2s; }
+  #about .about-cards .card:nth-child(3) { animation-delay: 0.3s; }
+  #about .about-cards .card:nth-child(4) { animation-delay: 0.4s; }
+  #about .about-cards .card:nth-child(5) { animation-delay: 0.5s; }
+
   @media (min-width: 1025px) {
   #about .about-cards {
     display: flex;
@@ -808,6 +836,7 @@ h3 {
       <div class="card"><p>Coordinate distributed teams</p></div>
       <div class="card"><p>Automate routine tasks with AI</p></div>
     </div>
+    
     <div class="stats">
       <div class="stat">
         <div class="number">10+</div>
@@ -977,15 +1006,14 @@ h3 {
           </ul>
         </div>
       </div>
-      
     </div>
 
     <!-- Project 2 -->
     <div class="project">
       <h3>Team Lead for UK sofa retailer</h3>
       <div class="project-description">
-        <p><strong>Client:</strong></p><p> British sofa retailer</p>
         <p><strong>Product:</strong></p><p> Retail website for sofas and home furniture</p>
+        <p><strong>Client:</strong></p><p> Sofology</p>
         <p><strong>Tools:</strong></p><p> Jira, Confluence</p>
         <div class="divider-top"></div>
         <p><strong>Project Goal:</strong></p>
@@ -1104,6 +1132,19 @@ h3 {
     <img loading="lazy" src="Images/Photo_6.jpeg" alt="Photo_8">
   </section>
 
+  <script>
+    // Pop-in animation for about cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('#about .about-cards .card');
+      const observer = new IntersectionObserver((entries, obs) => {
+        if (entries[0].isIntersecting) {
+          cards.forEach(card => card.style.animationPlayState = 'running');
+          obs.disconnect();
+        }
+      }, { threshold: 0.2 });
+      observer.observe(document.querySelector('#about'));
+    });
+  </script>
   <!-- Carousel Script -->
   <script>
     document.querySelectorAll('.project').forEach(project => {
