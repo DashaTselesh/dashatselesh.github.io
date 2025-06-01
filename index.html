@@ -58,7 +58,6 @@ header h1 {
       flex-direction: column;
       align-items: flex-start;
       gap: 0.1rem;
-      margin-left: -6rem;
     }
     .hello-line {
       margin-left: 20%;
@@ -75,6 +74,10 @@ header h1 {
     .coordinator-line {
       margin-left: 10%;
       font-size: clamp(2rem, 8vw, 4rem);
+    }
+    .for-business-line {
+      margin-left: 0%;
+      font-size: clamp(2rem, 8vw, 3rem);
     }
     .italic {
       font-style: italic;
@@ -117,6 +120,11 @@ header h1 {
       .coordinator-line {
         margin-left: 0;
         font-size: 2.5rem;
+        text-align: center;
+      }
+      .for-business-line {
+        margin-left: 0;
+        font-size: 1.8rem;
         text-align: center;
       }
       .avatar-large {
@@ -172,7 +180,9 @@ header h1 {
       .coordinator-line {
         font-size: 2.5rem;
       }
-
+      .for-business-line {
+        font-size: 1.8rem;
+      }
       .avatar-large {
         width: 200px;
       }
@@ -206,6 +216,11 @@ header h1 {
         font-size: 2rem;
         text-align: center;
       }
+      .for-business-line {
+        margin-left: 0;
+        font-size: 1.8rem;
+        text-align: center;
+      }
       .contact-btn {
         position: absolute;
         top: 1rem;
@@ -223,6 +238,29 @@ header h1 {
     @media (min-width: 1025px) {
       .header {
         gap: 6rem;
+      }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1075px) {
+      .header .hello-line,
+      .header .im-line,
+      .header .project-line,
+      .header .coordinator-line {
+        font-size: 2.5rem;
+      }
+      .header .for-business-line {
+        font-size: 1.5rem;
+      }
+    }
+    @media (min-width: 1025px) and (max-width: 1300px) {
+      .header .hello-line,
+      .header .im-line,
+      .header .project-line,
+      .header .coordinator-line {
+        font-size: 3rem;
+      }
+      .header .for-business-line {
+        font-size: 2rem;
       }
     }
 
@@ -247,6 +285,9 @@ header h1 {
     }
 h2 {
   font-size: 1.75rem; font-weight: 500; margin-bottom: 1rem; color: var(--color-accent-green);
+}
+.header h2 {
+  margin-bottom: 0;
 }
 
     /* About */
@@ -690,7 +731,6 @@ h3 {
       }
     }
     /* Contact Section Card */
-    
     #contact h2 {
       font-size: 1.75rem;
       font-weight: 500;
@@ -706,7 +746,7 @@ h3 {
     /* Custom Contact layout */
     #contact .contact-content {
       background: var(--color-bg2);
-      padding: 2rem 1rem;
+      padding: 1.5rem;
       border-radius: 12px;
       display: flex;
       flex-wrap: wrap;
@@ -716,17 +756,23 @@ h3 {
       margin: auto;
     }
     #contact .contact-text {
-      flex: 0 0 350px;
-      max-width: 350px;
+      flex: 1 1 100%;
+      max-width: 100%;
     }
     #contact .contact-text p {
-      font-size: 1.125rem;
+      font-size: 1.3rem;
+    }
+    /* Make intro paragraph larger and centered */
+    #contact .contact-intro p {
+      font-size: 2rem;
+      text-align: center;
+      color: var(--color-primary);
     }
     #contact .contact-details p {
       margin-top: 0.75rem;
     }
     #contact .contact-link.simple {
-      font-size: 1.125rem;
+      font-size: 1.3rem;
       color: var(--color-accent-pink);
     }
     #contact .contact-link.simple:hover {
@@ -817,6 +863,8 @@ h3 {
       <h2 class="im-line highlight-green italic">I'M DASHA</h2>
       <h3 class="project-line">PROJECT</h3>
       <h3 class="coordinator-line">COORDINATOR</h3>
+      <h3 class="for-business-line highlight-green italic">FOR SMALL AND MEDIUM</h3>
+      <h3 class="for-business-line highlight-green italic">BUSINESSES</h3>
     </div>
     <div class="header-right">
       <img loading="lazy" src="Images/Photo_me1.jpeg" alt="Dasha" class="avatar avatar-large">
@@ -830,11 +878,11 @@ h3 {
       <p>I'm a relationship-driven Project Coordinator who blends creative energy with structured processes:</p>
     </div>
     <div class="about-cards">
-      <div class="card"><p>Drive clear communication and group discussions</p></div>
-      <div class="card"><p>Translate goals into focused Agile sprints</p></div>
-      <div class="card"><p>Manage scope and expectations</p></div>
-      <div class="card"><p>Coordinate distributed teams</p></div>
-      <div class="card"><p>Enhance routine tasks with AI</p></div>
+      <div class="card"><p>Translate ideas into scoped, prioritized work chunks</p></div>
+      <div class="card"><p>Align all teams for seamless delivery</p></div>
+      <div class="card"><p>Establish a clear delivery cycle</p></div>
+      <div class="card"><p>Manage each release from kickoff to launch</p></div>
+      <div class="card"><p>Provide real-time visibility of tasks & blockers</p></div>
     </div>
     
     <div class="stats">
@@ -861,18 +909,18 @@ h3 {
   <section class="tools-marquee">
     <div class="marquee marquee-slow">
       <div class="marquee__group">
-        Notion&nbsp;·&nbsp;Jira&nbsp;·&nbsp;Confluence&nbsp;·&nbsp;Trello&nbsp;·&nbsp;Miro&nbsp;·&nbsp;Photoshop&nbsp;·&nbsp;Figma&nbsp;·&nbsp;Procreate&nbsp;·&nbsp;
+        Notion&nbsp;·&nbsp;Jira&nbsp;·&nbsp;Confluence&nbsp;·&nbsp;Trello&nbsp;·&nbsp;Miro&nbsp;·&nbsp;Figma&nbsp;·&nbsp;
       </div>
       <div class="marquee__group">
-        Notion&nbsp;·&nbsp;Jira&nbsp;·&nbsp;Confluence&nbsp;·&nbsp;Trello&nbsp;·&nbsp;Miro&nbsp;·&nbsp;Photoshop&nbsp;·&nbsp;Figma&nbsp;·&nbsp;Procreate&nbsp;·&nbsp;
+        Notion&nbsp;·&nbsp;Jira&nbsp;·&nbsp;Confluence&nbsp;·&nbsp;Trello&nbsp;·&nbsp;Miro&nbsp;·&nbsp;Figma&nbsp;·&nbsp;
       </div>
     </div>
     <div class="marquee marquee-fast">
       <div class="marquee__group">
-        Notion&nbsp;·&nbsp;Jira&nbsp;·&nbsp;Confluence&nbsp;·&nbsp;Trello&nbsp;·&nbsp;Miro&nbsp;·&nbsp;Photoshop&nbsp;·&nbsp;Figma&nbsp;·&nbsp;Procreate&nbsp;·&nbsp;
+        Notion&nbsp;·&nbsp;Jira&nbsp;·&nbsp;Confluence&nbsp;·&nbsp;Trello&nbsp;·&nbsp;Miro&nbsp;·&nbsp;Figma&nbsp;·&nbsp;
       </div>
       <div class="marquee__group">
-        Notion&nbsp;·&nbsp;Jira&nbsp;·&nbsp;Confluence&nbsp;·&nbsp;Trello&nbsp;·&nbsp;Miro&nbsp;·&nbsp;Photoshop&nbsp;·&nbsp;Figma&nbsp;·&nbsp;Procreate&nbsp;·&nbsp;
+        Notion&nbsp;·&nbsp;Jira&nbsp;·&nbsp;Confluence&nbsp;·&nbsp;Trello&nbsp;·&nbsp;Miro&nbsp;·&nbsp;Figma&nbsp;·&nbsp;
       </div>
     </div>
   </section>
@@ -927,26 +975,6 @@ h3 {
             </figure>
             <figure class="slide">
               <video data-src="Images/Challenges.mp4" muted playsinline preload="metadata" class="lazy-video"></video>
-            </figure>
-            <figure class="slide">
-              <img loading="lazy" src="Images/OldFeedbackForms.png" alt="Previous feedback form">
-              <figcaption>Previous Feedback Forms page</figcaption>
-            </figure>
-            <figure class="slide">
-              <img loading="lazy" src="Images/NewFeedbackForms.png" alt="New feedback form">
-              <figcaption>New Feedback Forms page</figcaption>
-            </figure>
-            <figure class="slide">
-              <img loading="lazy" src="Images/OldCreateForm.png" alt="Previous form edit">
-              <figcaption>Previous form edit functionality</figcaption>
-            </figure>
-            <figure class="slide">
-                <img loading="lazy" src="Images/NewFormEdit.png" alt="New form edit">
-                <figcaption>New form edit functionality</figcaption>
-            </figure>
-            <figure class="slide">
-                <img loading="lazy" src="Images/NewFunction.png" alt="New function">
-                <figcaption>New functionality</figcaption>
             </figure>
             <figure class="slide">
               <img loading="lazy" src="Images/Figma.png" alt="Figma">
@@ -1038,24 +1066,8 @@ h3 {
               <figcaption>New Basket</figcaption>
             </figure>
             <figure class="slide">
-              <img loading="lazy" src="Images/checkout.png" alt="Slide D">
-              <figcaption>Checkout Process</figcaption>
-            </figure>
-            <figure class="slide">
-              <img loading="lazy" src="Images/office.jpeg" alt="Slide D">
-              <figcaption>Business Trip</figcaption>
-            </figure>
-            <figure class="slide">
-              <img loading="lazy" src="Images/cups.jpeg" alt="Slide D">
-              <figcaption>Coffee Break</figcaption>
-            </figure>
-            <figure class="slide">
-              <img loading="lazy" src="Images/workinprogress.jpeg" alt="Slide D">
-              <figcaption>Technical Discussions</figcaption>
-            </figure>
-            <figure class="slide">
-              <img loading="lazy" src="Images/jacket.jpeg" alt="Slide D">
-              <figcaption>Warehouse Tour</figcaption>
+              <img loading="lazy" src="Images/basket3.png" alt="Slide C">
+              <figcaption>Payment Calculator</figcaption>
             </figure>
           </div>
           <button class="next">▶</button>
@@ -1103,7 +1115,7 @@ h3 {
     <div class="contact-content">
       <div class="contact-text">
         <div class="contact-intro">
-          <p>Looking for support with managing your project?<br>I’d love to hear what you’re working on — let’s move it forward together.</p>
+          <p>Looking for support with managing your project?</p><p>I’d love to hear what you’re working on — </br><em>let’s move it forward together.</em></p>
         </div>
         <div class="contact-details">
           <p><strong>Vilnius, Lithuania</strong></p>
@@ -1111,11 +1123,6 @@ h3 {
           <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/darya-tselesh-1a5b3572/?locale=en_US" class="contact-link simple" target="_blank">dasha_telesh</a></p>
         </div>
       </div>
-      <form id="contact-form" class="contact-form">
-        <input type="text" name="name" placeholder="Your name">
-        <textarea name="message" placeholder="Message"></textarea>
-        <button type="submit" class="send-btn">Send a message</button>
-      </form>
     </div>
   </section>
 
